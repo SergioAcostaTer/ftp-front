@@ -5,9 +5,8 @@ import useUploads from "../hooks/useUploads";
 const UploadButton = () => {
   const [showMenu, setShowMenu] = React.useState(false);
 
-  const [path, setReqStatus] = useFileStatus((state) => [
+  const [path] = useFileStatus((state) => [
     state.path,
-    state.setReqStatus,
   ]);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -15,7 +14,6 @@ const UploadButton = () => {
   const { handleNewFolder, handleUpload, handleFileChange } = useUploads(
     inputRef,
     path,
-    setReqStatus
   );
 
   return (

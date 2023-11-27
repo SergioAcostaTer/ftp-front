@@ -1,17 +1,17 @@
-import { ChangeEvent, SetStateAction } from "react";
+import { ChangeEvent } from "react";
 import { newFolder } from "../services/newFolder";
 import { uploadFile } from "../services/upload";
+import useFileStatus from "./useFileStatus";
 
-const useUploads = (
-  ref: React.RefObject<HTMLInputElement>,
-  path: string,
-  setReqStatus: React.Dispatch<SetStateAction<any>>
-) => {
+const useUploads = (ref: React.RefObject<HTMLInputElement>, path: string) => {
+  const setReqFinish = useFileStatus((state) => state.setReqFinish);
+
   const handleNewFolder = async (path: string) => {
     const folderName = prompt("New Folder Name");
     if (folderName) {
-      const res = await newFolder(path + "-" + folderName);
-      setReqStatus(res);
+      await newFolder(path + "-" + folderName).then((data) => {
+        setReqFinish(data);
+      });
     }
   };
 
@@ -24,8 +24,9 @@ const useUploads = (
       const files = Array.from(e.target.files);
 
       for (const file of files) {
-        const data = await uploadFile(path, file, file.name);
-        setReqStatus(data);
+        await uploadFile(path, file, file.name).then((data) => {
+          setReqFinish(data);
+        });
       }
     }
   };

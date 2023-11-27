@@ -9,7 +9,7 @@ import useFileStatus from "../hooks/useFileStatus";
 import axiosInstance from "../services/axios";
 
 export const File = ({ name, path }: { name: string; path: string }) => {
-  const [setReqStatus] = useFileStatus((state) => [state.setReqStatus]);
+  const [setFinish] = useFileStatus((state) => [state.setReqFinish]);
 
   const handleDownload = async () => {
     const res = await fetch(axiosInstance.defaults.baseURL + "/download/" + path, {
@@ -31,7 +31,7 @@ export const File = ({ name, path }: { name: string; path: string }) => {
 
   const handleDelete = async () => {
     const res = await removeFile(path);
-    setReqStatus(res);
+    setFinish(res);
   };
 
   return (

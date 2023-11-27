@@ -10,15 +10,11 @@ import useUploads from "../hooks/useUploads";
 import { Link } from "react-router-dom";
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
-  const [path, setReqStatus] = useFileStatus((state) => [
-    state.path,
-    state.setReqStatus,
-  ]);
+  const [path] = useFileStatus((state) => [state.path]);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const { handleNewFolder, handleUpload, handleFileChange } = useUploads(
     inputRef,
-    path,
-    setReqStatus
+    path
   );
 
   return (

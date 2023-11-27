@@ -1,43 +1,16 @@
-import { useEffect } from "react";
-import { getFileList } from "../services/fileList";
-import React from "react";
-import { FileList } from "../types";
-
+import { FolderRes } from "../types";
 import { Folder as FolderComp } from "../components/Folder.tsx";
 import { File } from "../components/File";
 import { useParams } from "react-router-dom";
-import useFileStatus from "../hooks/useFileStatus.ts";
 import { Menu } from "../components/Menu.tsx";
-import axiosInstance from "../services/axios.ts";
 import UploadButton from "../components/uploadButton.tsx";
+import useFolder from "../hooks/useFolder.ts";
+
 
 export default function Folder() {
   const { path } = useParams();
-  const [fileList, setFileList] = React.useState<FileList>({} as FileList);
-  const [reqStatus, setPath] = useFileStatus((state) => [
-    state.reqStatus,
-    state.setPath,
-  ]);
-  console.log(path);
+  const fileList: FolderRes = useFolder(path || "");
 
-  useEffect(() => {
-    const password = localStorage.getItem("password");
-    if(password){
-      axiosInstance.defaults.headers.common["Authorization"] = `${password}`;
-    }
-
-    if (path) {
-      setPath(path);
-      getFileList(path).then((data) => {
-        setFileList(data as unknown as FileList);
-      });
-    }else{
-      setPath("");
-      getFileList("").then((data) => {
-        setFileList(data as unknown as FileList);
-      });
-    }
-  }, [path, reqStatus]);
 
   return (
     <Menu>

@@ -34,7 +34,6 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    //check if pass in localstorage
     const pass = localStorage.getItem("password");
     if (pass) {
       login(pass).then((data) => {

@@ -1,12 +1,8 @@
+import { reqFinish } from "../types";
 import axiosInstance from "./axios";
 
 
-export type NewFolderResponse = {
-  message: string;
-  path: string;
-};
-
-export async function newFolder(path: string): Promise<NewFolderResponse> {
+export async function newFolder(path: string): Promise<reqFinish> {
   try {
     const response = await axiosInstance.post(`/mkdir/${path}`);
 

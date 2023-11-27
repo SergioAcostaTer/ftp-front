@@ -2,17 +2,17 @@ import create from "zustand";
 
 type FileStatusStore = {
   path: string;
-  reqStatus: { message: string; result: string };
+  reqFinish: { message: string; result: string };
   setPath: (path: string) => void;
-  setReqStatus: (reqStatus: { message: string; result: string }) => void;
+  setReqFinish: (reqStatus: { message: string; result: string }) => void;
 };
 
 const useFileStatus = create<FileStatusStore>((set) => ({
   path: "",
-  reqStatus: { message: "", result: "" },
+  reqFinish: { message: "", result: "" },
   setPath: (path: string) => set({ path }),
-  setReqStatus: (reqStatus: { message: string; result: string }) =>
-    set({ reqStatus }),
+  setReqFinish: (reqFinish: { message: string; result: string }) =>
+    set({ reqFinish }),
 }));
 
 export default useFileStatus;
