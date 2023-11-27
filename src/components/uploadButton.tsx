@@ -21,14 +21,14 @@ const UploadButton = () => {
   return (
     <>
       <div
-        className="fixed bottom-10 right-10 w-16 h-16 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-blue-600 transition duration-200 ease-in-out md:hidden"
+        className="fixed bottom-10 right-10 w-16 h-16 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-blue-600 transition duration-200 ease-in-out md:hidden z-10"
         onClick={() => setShowMenu(!showMenu)}
       >
         +
       </div>
 
       {showMenu && (
-        <div className="absolute w-full h-full top-0 left-0 bg-white bg-opacity-90 flex items-center justify-center space-x-4 p-4">
+        <div className="absolute w-full h-full top-0 left-0 bg-white bg-opacity-90 flex items-center justify-center space-x-4 p-4 z-10">
           <div
             onClick={() => {
               setShowMenu(false);
