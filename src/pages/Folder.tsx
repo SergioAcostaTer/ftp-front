@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import useFileStatus from "../hooks/useFileStatus.ts";
 import { Menu } from "../components/Menu.tsx";
 import axiosInstance from "../services/axios.ts";
+import UploadButton from "../components/uploadButton.tsx";
 
 export default function Folder() {
   const { path } = useParams();
@@ -49,6 +50,7 @@ export default function Folder() {
           <File name={file} key={file} path={path ? path + "-" + file : file} />
         ))}
       </div>
+      <UploadButton />
     </Menu>
   );
 }
