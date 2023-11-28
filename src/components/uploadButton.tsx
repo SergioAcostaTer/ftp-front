@@ -49,7 +49,6 @@ const UploadButton = () => {
 
       <input
         type="file"
-        accept=".jpg, .jpeg, .png, .gif, .pdf, .mp4, .mp3"
         onChange={handleFileChange}
         multiple
         className="hidden"
