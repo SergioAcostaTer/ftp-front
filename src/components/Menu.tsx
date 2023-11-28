@@ -16,7 +16,6 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
     
        <div className="flex justify-center w-full bg-[#F7F9FC] h-full">
          <nav className="flex justify-center w-[400px] h-full h-16 bg-[#F7F9FC] sticky top-24 z-10 flex-col pl-4  hidden md:flex">
-           
            <ul className="flex items-center justify-center space-x-4 text-white">
              
            </ul>
