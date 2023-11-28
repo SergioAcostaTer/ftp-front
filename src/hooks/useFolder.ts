@@ -47,7 +47,7 @@ const useFolder = (path: string) => {
     }
   }, [path, reqFinish, setPath]);
 
-  return { fileList, loading };
+  return { fileList, loading, navigate };
 };
 
 export default useFolder;
