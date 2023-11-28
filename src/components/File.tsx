@@ -4,7 +4,7 @@ import axiosInstance from "../services/axios";
 import React, { useEffect } from "react";
 
 const useFile = (path: string, size: number) => {
-  const [file, setFile] = React.useState(null);
+  const [file, setFile] = React.useState<string | null>(null);
   const imageExtensions = ["png", "jpg", "jpeg", "gif", "svg", "webp"];
   const [setFinish] = useFileStatus((state) => [state.setReqFinish]);
   const [loading, setLoading] = React.useState(true);
@@ -45,7 +45,7 @@ const useFile = (path: string, size: number) => {
     if (file) {
       const a = document.createElement("a");
       a.href = file;
-      a.download = path.split("$").pop();
+      a.download = path.split("$").pop()!;
       a.click();
     } else {
       const res = await fetch(
@@ -65,7 +65,7 @@ const useFile = (path: string, size: number) => {
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = path.split("$").pop();
+      a.download = path.split("$").pop()!;
       a.click();
     }
   };

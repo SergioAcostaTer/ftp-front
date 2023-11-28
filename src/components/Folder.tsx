@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Folder = ({ name, path }: { name: string; path: string }) => {
+export const Folder = ({ name, path, mode }: { name: string; path: string, mode: "grid" | "list" }) => {
   return (
     <Link to={`/${path}`}>
       <div className="flex items-center space-x-2 flex-col justify-center p-4 bg-gray-100 rounded-md shadow-md hover:bg-gray-200 transition duration-200 ease-in-out h-full">
@@ -16,6 +16,11 @@ export const Folder = ({ name, path }: { name: string; path: string }) => {
         </svg>
         <p className="text-center text-xl">{name}</p>
       </div>
+
+      <p className="hidden">
+        {mode}
+      </p>
+
     </Link>
   );
 };

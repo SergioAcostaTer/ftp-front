@@ -26,10 +26,12 @@ export async function uploadFile(
         "Content-Type": "multipart/form-data",
       },
       onUploadProgress: (progressEvent) => {
-        const progress = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
-        );
-        onProgress?.(progress);
+        if (progressEvent.total !== undefined) {
+          const progress = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total 
+          );
+          onProgress?.(progress);
+        }
       },
     });
 

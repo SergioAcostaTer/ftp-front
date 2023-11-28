@@ -16,6 +16,13 @@ export default function Folder() {
 
   return (
     <Menu>
+
+      <div className="flex items-center justify-center space-x-4 text-white">
+        <button onClick={() => setMode(prev => prev === "grid" ? "list" : "grid")}>
+          {mode === "grid" ? "List" : "Grid"}
+          </button>
+      </div>
+
       <div className={`grid gap-4 w-full p-4 absolute top-0 left-0 right-0 bottom-0 overflow-y-scroll ${mode === "grid" ? "grid-cols-[repeat(auto-fill,minmax(150px,1fr))] grid-rows-[repeat(auto-fill,minmax(150px,1fr))]" : "grid-cols-1 grid-rows-[repeat(auto-fill,minmax(30px,1fr))]"}`}>
         {loading ? (
           <h1>Loading...</h1>
