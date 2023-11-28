@@ -26,11 +26,8 @@ const MiniButton = ({
 
 const UploadButton = () => {
   const [showMenu, setShowMenu] = React.useState(false);
-
   const [path] = useFileStatus((state) => [state.path]);
-
   const inputRef = React.useRef<HTMLInputElement>(null);
-
   const { handleNewFolder, handleUpload, handleFileChange } = useUploads(
     inputRef,
     path
