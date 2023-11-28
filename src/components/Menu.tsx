@@ -28,7 +28,6 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
        </div>
        <input
          type="file"
-         accept="*"
          onChange={handleFileChange}
          multiple
          className="hidden"
