@@ -3,7 +3,7 @@ import { FolderRes } from "../types";
 import { Folder as FolderComp } from "../components/Folder.tsx";
 import { File } from "../components/File";
 import { useParams } from "react-router-dom";
-import UploadButton from "../components/UploadButton.tsx";
+import UploadButton from "../components/uploadButton.tsx";
 import useFolder from "../hooks/useFolder.ts";
 import { Menu } from "../components/Menu.tsx";
 import { Link } from "react-router-dom";
