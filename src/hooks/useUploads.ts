@@ -9,7 +9,7 @@ const useUploads = (ref: React.RefObject<HTMLInputElement>, path: string) => {
   const handleNewFolder = async (path: string) => {
     const folderName = prompt("New Folder Name");
     if (folderName) {
-      await newFolder(path + "-" + folderName).then((data) => {
+      await newFolder(path + "$" + folderName).then((data) => {
         setReqFinish(data);
       });
     }
@@ -22,9 +22,12 @@ const useUploads = (ref: React.RefObject<HTMLInputElement>, path: string) => {
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const files = Array.from(e.target.files);
+      const onProgress = (progress: number) => {
+        console.log(progress);
+      }
 
       for (const file of files) {
-        await uploadFile(path, file, file.name).then((data) => {
+        await uploadFile(path, file, file.name, onProgress).then((data) => {
           setReqFinish(data);
         });
       }

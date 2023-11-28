@@ -64,19 +64,19 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
               </>
             )}
 
-            {path.split("-").map((folder, index) => {
+            {path.split("$").map((folder, index) => {
               return (
                 <>
                   <Link
                     to={`/${path
-                      .split("-")
+                      .split("$")
                       .slice(0, index + 1)
-                      .join("-")}`}
+                      .join("$")}`}
                   >
                     {folder}
                   </Link>
 
-                  {index !== path.split("-").length - 1 && (
+                  {index !== path.split("$").length - 1 && (
                     <span className="mx-2">/</span>
                   )}
                 </>

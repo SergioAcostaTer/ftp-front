@@ -1,12 +1,19 @@
 export type FolderRes = {
-    status: number;
-    data: {
-        files: string[];
-        dir: string[];
-    };
+  status: number;
+  data: {
+    files: {
+      name: string;
+      size: number;
+      date: string;
+    }[];
+    dir: {
+      name: string;
+      date: string;
+    }[];
+  };
 };
 
 export type reqFinish = {
-    message: string;
-    result: string;
+  message: string;
+  result: string;
 };

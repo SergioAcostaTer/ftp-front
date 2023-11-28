@@ -10,7 +10,8 @@ type UploadResponse = {
 export async function uploadFile(
   remotePath: string,
   fileBuffer: File,
-  fileName: string
+  fileName: string,
+  onProgress?: (progress: number) => void
 ): Promise<UploadResponse> {
   try {
     const formData = new FormData();
@@ -23,6 +24,12 @@ export async function uploadFile(
     const response = await axiosInstance.post(`/upload`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+      },
+      onUploadProgress: (progressEvent) => {
+        const progress = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        onProgress?.(progress);
       },
     });
 
