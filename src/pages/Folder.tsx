@@ -35,23 +35,35 @@ export default function Folder() {
             }
           }}
         >
-          {"<- Back"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="w-[35px] h-[35px] text-black"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+            />
+          </svg>
         </p>
 
-        <h1>{path ? path.split("$").pop() : "Mi Unidad"}</h1>
+        <h1 className="text-black text-xl">
+          {path ? path.split("$").pop() : "Mi Unidad"}
+        </h1>
 
         <p className="text-blue-500 cursor-pointer">{"search"}</p>
       </header>
 
       <div className="flex items-center justify-center space-x-4 text-black sticky top-[60px] left-0 right-0 z-10 bg-[#F7F9FC] p-4 md:hidden">
-          <button
-            onClick={() =>
-              setMode((prev) => (prev === "grid" ? "list" : "grid"))
-            }
-          >
-            {mode === "grid" ? "List" : "Grid"}
-          </button>
-        </div>
+        <button
+          onClick={() => setMode((prev) => (prev === "grid" ? "list" : "grid"))}
+        >
+          {mode === "grid" ? "List" : "Grid"}
+        </button>
+      </div>
 
       <Menu>
         <div className="flex w-full sticky top-0 hidden md:flex p-4">
@@ -83,14 +95,12 @@ export default function Folder() {
           })}
         </div>
 
-        
-
         <div
-          className={`grid gap-4 w-full p-4 top-0 left-0 right-0 bottom-0 overflow-y-scroll h-full
+          className={`gap-4 w-full p-4 top-0 left-0 right-0 bottom-0 overflow-y-scroll h-full
           ${
             mode === "grid"
-              ? "grid-cols-[repeat(auto-fill,minmax(150px,1fr))] grid-rows-[repeat(auto-fill,minmax(150px,1fr))]"
-              : "grid-cols-1 grid-rows-[repeat(auto-fill,minmax(30px,1fr))]"
+              ? "grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] grid-rows-[repeat(auto-fill,minmax(150px,1fr))] h-screen"
+              : "flex flex-col"
           }`}
         >
           {loading ? (
